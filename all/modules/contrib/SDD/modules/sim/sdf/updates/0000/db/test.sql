@@ -1,0 +1,4 @@
+
+INSERT INTO `sdd`.`watchdog` (`wid`, `uid`, `type`, `message`, `variables`, `severity`, `link`, `location`, `referer`, `hostname`, `timestamp`) VALUES (NULL, '1', 'test', 'test message', 'a:0:{}', '0', '', '', NULL, '192.168.1.197', '1234567890');
+INSERT INTO `sdd`.`watchdog` (`wid`, `uid`, `type`, `message`, `variables`, `severity`, `link`, `location`, `referer`, `hostname`, `timestamp`) VALUES (NULL, '1', 'test', 'test message', 'a:0:{}', '0', '', '', NULL, '192.168.1.197', '1234567890');
+INSERT INTO `sdd`.`watchdog` (`wid`, `uid`, `type`, `message`, `variables`, `severity`, `link`, `location`, `referer`, `hostname`, `timestamp`) VALUES (NULL, '1', 'test', 'test message', 'a:0:{}', '0', '', '', NULL, '192.168.1.197', '1234567890');

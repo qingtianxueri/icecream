@@ -1,0 +1,102 @@
+<?php
+
+require_once sdf_path() . '/classes/system/SDFSystem.php';
+spl_autoload_register("\sdf\system\SDFSystem::autoload");
+
+use sdf\hooks\invokers\SDFHookInitInvoker;
+use sdf\hooks\invokers\SDFHookMenuAlterInvoker;
+use sdf\hooks\invokers\SDFHookMenuInvoker;
+use sdf\hooks\invokers\SDFHookBlockInfoInvoker;
+use sdf\hooks\invokers\SDFHookBlockViewInvoker;
+use sdf\hooks\invokers\SDFHookNodeDeleteInvoker;
+use sdf\hooks\invokers\SDFHookNodeInsertInvoker;
+use sdf\hooks\invokers\SDFHookNodePresaveInvoker;
+use sdf\hooks\invokers\SDFHookNodeUpdateInvoker;
+use sdf\hooks\invokers\SDFHookFormAlterInvoker;
+use sdf\system\SDFCoreModule;
+
+\sdf\system\SDFSystem::instance()->registerModule(new SDFCoreModule());
+
+function sdf_init() {
+    $hookInitInvoker = new SDFHookInitInvoker();
+    $hookInitInvoker->invoke();
+}
+
+function sdf_menu() {
+    $hookMenuInvoker = new SDFHookMenuInvoker();
+    return $hookMenuInvoker->invoke()->getList();
+}
+
+function sdf_menu_alter(&$items) {
+    $hookMenuAlterInvoker = new SDFHookMenuAlterInvoker($items);
+    $hookMenuAlterInvoker->invoke();
+}
+
+/*function sdf_admin_paths_alter(&$paths) {
+    $hookAdminPathAlterInvoker = new SDFHookAdminPathsAlterInvoker($paths);
+    $hookAdminPathAlterInvoker->invoke();
+}*/
+
+function sdf_block_info() {
+    $hookBlockInfoInvoker = new SDFHookBlockInfoInvoker();
+    return $hookBlockInfoInvoker->invoke()->getList();
+}
+
+function sdf_block_view($delta) {
+    $hookBlockView = new SDFHookBlockViewInvoker($delta);
+    return $hookBlockView->invoke()->getResult();
+}
+
+/*function sdf_block_save($delta, $edit) {
+    $hookBlockSaveInvoker = new SDFHookBlockSaveInvoker($delta, $edit);
+    $hookBlockSaveInvoker->invoke();
+}*/
+
+/*function sdf_block_configure($delta = '') {
+    $hookBlockConfigureInvoker = new SDFHookBlockConfigureInvoker($delta);
+    return $hookBlockConfigureInvoker->invoke()->getResult();
+}*/
+
+function sdf_node_presave($node) {
+    $hookNodePresaveInvoker = new SDFHookNodePresaveInvoker($node);
+    $hookNodePresaveInvoker->invoke();
+}
+
+function sdf_node_insert($node) {
+    $hookNodeInsertInvoker = new SDFHookNodeInsertInvoker($node);
+    $hookNodeInsertInvoker->invoke();
+}
+
+function sdf_node_update($node) {
+    $hookNodeUpdateInvoker = new SDFHookNodeUpdateInvoker($node);
+    $hookNodeUpdateInvoker->invoke();
+}
+
+function sdf_node_delete($node) {
+    $hookNodeDeleteInvoker = new SDFHookNodeDeleteInvoker($node);
+    $hookNodeDeleteInvoker->invoke();
+}
+
+/*function sdf_node_view($node, $mode, $langcode) {
+    $hookNodeViewInvoker = new SDFHookNodeViewInvoker($node, $mode, $langcode);
+    $hookNodeViewInvoker->invoke();
+}*/
+
+/*function sdf_taxonomy_term_view($term, $mode, $langcode) {
+    $hookTaxonomyTermViewInvoker = new SDFHookTaxonomyTermViewInvoker($term, $mode, $langcode);
+    $hookTaxonomyTermViewInvoker->invoke();
+}*/
+
+/*function sdf_user_view($user, $mode, $langcode) {
+    $hookUserViewInvoker = new SDFHookUserViewInvoker($user, $mode, $langcode);
+    $hookUserViewInvoker->invoke();
+}*/
+
+function sdf_form_alter(&$form, $formState, $formId) {
+    $hookFormAlter = new SDFHookFormAlterInvoker($form, $formState, $formId);
+    $hookFormAlter->invoke();
+}
+
+function sdf_path(){
+    return drupal_get_path('module', 'sdf');
+}

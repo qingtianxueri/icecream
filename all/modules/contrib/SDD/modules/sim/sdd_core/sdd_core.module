@@ -1,0 +1,50 @@
+<?php
+
+// Add sdf module path to the php include path
+$simRoot = dirname(__FILE__);
+$includePath = '.' . PATH_SEPARATOR . $simRoot . PATH_SEPARATOR . get_include_path();
+set_include_path($includePath);
+
+// Add project specific module path to the php include path
+$projectRoot = 'sites/all/modules/sim';
+$includePath = '.' . PATH_SEPARATOR . $projectRoot . PATH_SEPARATOR . get_include_path();
+set_include_path($includePath);
+
+/**
+ * @todo hook init?
+ * @todo hook admin paths alter?
+ */
+
+/*
+ *  hook_node_presave
+ *  when insert/update the home node
+ *  update the site info
+ */
+function sdd_core_node_presave($node){
+  if($node->type == 'homepage'){
+    // Only EN site info will be saved in the "varible" table.The others are in the "variable_store".
+
+    $variable = array('site_name' => $node->field_site_name['und'][0]['value'],
+                      'site_slogan' => $node->field_site_slogan['und'][0]['value'],
+                      'site_mail' => $node->field_site_email_address['und'][0]['email']);
+
+    foreach ($variable as $k => $v){
+      i18n_variable_set($k, $v, $node->language);
+    }
+    //Site logo/ico has only one place to save.Need to find a good way to do in the mutiple language. 
+    $theme_settings = variable_get('theme_settings');
+    $theme_settings['default_logo'] = 0;
+    $theme_settings['logo_path'] = file_load($node->field_site_logo['und'][0]['fid'])->uri;
+    $theme_settings['default_favicon'] = 0;
+    $theme_settings['favicon_path'] = file_load($node->field_site_favicon['und'][0]['fid'])->uri;
+    variable_set('theme_settings',$theme_settings);
+    
+   
+    //Flush site info cache after you save it. 
+    $core = array('cache', 'cache_path', 'cache_filter', 'cache_bootstrap', 'cache_page');
+    $cache_tables = array_merge(module_invoke_all('flush_caches'), $core);
+    foreach ($cache_tables as $table) {
+      cache_clear_all('*', $table, TRUE);
+    }
+  }
+}

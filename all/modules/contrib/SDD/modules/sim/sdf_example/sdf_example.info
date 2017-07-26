@@ -1,0 +1,6 @@
+name = SDF Example
+description = An example module for how to develop with SDF
+package = SiM
+core = 7.x
+version = 7.x-0.1
+dependencies[] = sdf

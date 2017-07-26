@@ -1,0 +1,7 @@
+name = c2dTheme
+description = This is a custom theme base on BootStrap.
+core = 7.x
+base theme = bootstrap
+
+
+stylesheets[all][] = css/c2dTheme.css

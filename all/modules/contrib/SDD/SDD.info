@@ -1,0 +1,91 @@
+name = SDD
+description = Basic modules intalled on the website.
+version = VERSION
+core = 7.x
+dependencies[] = block
+dependencies[] = contextual
+dependencies[] = dblog
+dependencies[] = field
+dependencies[] = field_sql_storage
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = filter
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = node
+dependencies[] = number
+dependencies[] = options
+dependencies[] = overlay
+dependencies[] = path
+dependencies[] = php
+dependencies[] = rdf
+dependencies[] = syslog
+dependencies[] = system
+dependencies[] = taxonomy
+dependencies[] = update
+dependencies[] = user
+
+; Install Commerce dependencies.
+dependencies[] = addthis
+dependencies[] = admin_devel
+dependencies[] = admin_menu
+dependencies[] = admin_menu_source
+dependencies[] = addthis
+dependencies[] = admin_menu_toolbar
+dependencies[] = addthis
+dependencies[] = backup_migrate
+dependencies[] = boost
+dependencies[] = ctools
+dependencies[] = checklistapi
+dependencies[] = date
+dependencies[] = date_all_day
+dependencies[] = date_api
+dependencies[] = date_context
+dependencies[] = date_migrate
+dependencies[] = date_popup
+dependencies[] = date_repeat
+dependencies[] = date_repeat_field
+dependencies[] = date_views
+dependencies[] = entity
+dependencies[] = entityreference
+dependencies[] = entity_token
+dependencies[] = field_collection
+dependencies[] = field_group
+dependencies[] = globalredirect
+dependencies[] = googleanalytics
+dependencies[] = imagecache_canvasactions
+dependencies[] = libraries
+dependencies[] = entity
+dependencies[] = link
+dependencies[] = logintoboggan
+dependencies[] = maxlength
+dependencies[] = media
+dependencies[] = metatag
+dependencies[] = nodeblock
+dependencies[] = pathauto
+dependencies[] = path_breadcrumbs
+dependencies[] = path_breadcrumbs_ui
+dependencies[] = redirect
+dependencies[] = rules
+dependencies[] = seo_checklist
+dependencies[] = token
+dependencies[] = transliteration
+dependencies[] = views
+dependencies[] = views_bulk_operations
+dependencies[] = views_php
+dependencies[] = views_ui
+dependencies[] = webform
+dependencies[] = xmlsitemap
+dependencies[] = xmlsitemap_node
+dependencies[] = xmlsitemap_i18n
+dependencies[] = ckeditor
+
+
+
+
+; Information added by SIM web term on 2014-01-08
+version = "7.25-1.2.x"
+project = "SDD"
+datestamp = "1389149813"
+
