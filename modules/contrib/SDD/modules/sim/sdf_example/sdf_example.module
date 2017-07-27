@@ -1,6 +1,0 @@
-<?php
-
-use sdf\system\SDFSystem;
-use sdf_example\SDFExampleModule;
-
-SDFSystem::instance()->registerModule(new SDFExampleModule());

@@ -1,6 +1,0 @@
-name = SiM Drupal Framework
-description = SiM Drupal Framework
-package = SiM
-core = 7.x
-version = 7.x-0.1
-dependencies[] = entity
